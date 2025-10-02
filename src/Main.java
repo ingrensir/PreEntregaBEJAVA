@@ -11,6 +11,7 @@ public class Main {
     int opcionUsuario;
 
     System.out.println("Te damos la Bienvenida a la app de compras 🛒");
+    label:
     while(true){
       System.out.println("""
           Ingrese el número equivalente a la opcion:
@@ -23,14 +24,16 @@ public class Main {
           """);
       opcionUsuario = entrada.nextInt();
 
-      if (opcionUsuario == 1){
-        crearProducto(productoDB);
-         } else if (opcionUsuario == 2){
-            listarProductos(productoDB);
-      }
-      else if (opcionUsuario == 0){
-        System.out.println("Gracias por usar la app!");
-        break; // Corta el bucle.-
+      switch (opcionUsuario) {
+        case 1:
+          crearProducto(productoDB);
+          break;
+        case 2:
+          listarProductos(productoDB);
+          break;
+        case 0:
+          System.out.println("Gracias por usar la app!");
+          break label; // Corta el bucle.-
       }
     }
   }
